@@ -19,3 +19,22 @@
 .card__img:hover{
 	transform: scale(1.1);
 }
+.card__add-cart{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 10px;
+	border: none;
+	background-color: rgba(0, 112, 209, 0.9);
+	color: white;
+	cursor: pointer;
+	font-size: 13px;
+	font-weight: 600;
+	transition: 0.2s;
+	z-index: 2;
+}
+
+.card__add-cart:hover{
+	background-color: #0090ff;
+}

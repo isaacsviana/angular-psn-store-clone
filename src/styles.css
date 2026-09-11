@@ -1,12 +1,138 @@
-/* You can add global styles to this file, and also import other style files */
+/* --- Fonte --- */
 *{
-	padding: 0;
-	margin: 0;
-	border: 0;
-	box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: white;
 }
 
+/* --- Filtros --- */
+.filtros{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 40px;
+}
+
+.filtros__busca{
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background-color: rgba(255,255,255,0.08);
+  color: white;
+  font-size: 14px;
+  max-width: 300px;
+}
+
+.filtros__plataformas{
+  display: flex;
+  gap: 8px;
+}
+
+.filtros__plataformas button{
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #0070d1;
+  background-color: transparent;
+  color: #0070d1;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.filtros__plataformas button:hover,
+.filtros__plataformas button.ativo{
+  background-color: #0070d1;
+  color: white;
+}
+
+.filtros__ordenar{
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background-color: rgba(255,255,255,0.08);
+  color: white;
+  font-size: 13px;
+}
+
+.filtros__carrinho-btn{
+  margin-left: auto;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: #0070d1;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.filtros__carrinho-btn:hover{
+  background-color: #0090ff;
+}
+
+.sem-resultado{
+  padding: 40px;
+  text-align: center;
+  color: #ccc;
+}
+
+/* --- Carrinho --- */
+.carrinho{
+  margin: 0 40px 20px;
+  padding: 20px;
+  background-color: rgba(255,255,255,0.06);
+  border-radius: 10px;
+}
+
+.carrinho h2{
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+.carrinho__item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.carrinho__item button{
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: none;
+  background-color: #d10000;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.carrinho__total{
+  margin-top: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: right;
+}
+
+/* --- Botão adicionar ao carrinho no card --- */
+.card__add-cart{
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  background-color: #0070d1;
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.card__add-cart:hover{
+  background-color: #0090ff;
+}
 body{
-  background: rgb(2,0,36);
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(9,9,121,1) 100%);
+  padding-top: 40px;
 }

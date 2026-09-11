@@ -1,31 +1,61 @@
+<div class="filtros">
+	<input
+		type="text"
+		placeholder="Buscar jogo..."
+		[(ngModel)]="searchTerm"
+		class="filtros__busca"
+	>
+
+	<div class="filtros__plataformas">
+		<button
+			*ngFor="let p of platforms"
+			(click)="filterByPlatform(p)"
+			[class.ativo]="selectedPlatform === p"
+		>
+			{{ p }}
+		</button>
+	</div>
+
+	<select [(ngModel)]="sortOrder" class="filtros__ordenar">
+		<option value="">Ordenar por</option>
+		<option value="asc">Menor preço</option>
+		<option value="desc">Maior preço</option>
+	</select>
+
+	<button class="filtros__carrinho-btn" (click)="toggleCarrinho()">
+		🛒 Carrinho ({{ cart.length }})
+	</button>
+</div>
+
+<div class="carrinho" *ngIf="carrinhoAberto">
+	<h2>Seu carrinho</h2>
+
+	<p *ngIf="cart.length === 0">Carrinho vazio.</p>
+
+	<div class="carrinho__item" *ngFor="let item of cart; let i = index">
+		<span>{{ item.name }}</span>
+		<span>R$ {{ item.price.toFixed(2) }}</span>
+		<button (click)="removeFromCart(i)">Remover</button>
+	</div>
+
+	<p *ngIf="cart.length > 0" class="carrinho__total">
+		Total: R$ {{ cartTotal.toFixed(2) }}
+	</p>
+</div>
+
 <div class="home__container">
 	<app-card
-		gameCover="assets/bt-1.jpg"
-		gameLabel="DIGITAL"
-		gameType="DIGITAL | PS4"
-		gamePrice="R$ 129,99"
-	>
-	</app-card>
-	<app-card
-		gameCover="assets/bt-4.jpg"
-		gameLabel="EXCLUSIVE"
-		gameType="DISC | PS5"
-		gamePrice="R$ 269,99"
-	>
-	</app-card>
-	<app-card
-		gameCover="assets/ac-cover.jpg"
-		gameLabel="BEST OF YEAR"
-		gameType="DIGITAL | PS5"
-		gamePrice="R$ 369,99"
-		>
-	</app-card>
-	<app-card
-		gameCover="assets/bt-hardline.jpg"
-		gameLabel="NEW"
-		gameType="DIGITAL | PS3 PS4 PS5"
-		gamePrice="R$ 369,99"
+		*ngFor="let game of filteredGames"
+		[id]="game.id"
+		[name]="game.name"
+		gameCover="{{ game.gameCover }}"
+		gameLabel="{{ game.gameLabel }}"
+		gameType="{{ game.gameType }}"
+		gamePrice="R$ {{ game.price.toFixed(2) }}"
+		[price]="game.price"
+		(addToCart)="onAddToCart($event)"
 	>
 	</app-card>
 </div>
 
+<p *ngIf="filteredGames.length === 0" class="sem-resultado">Nenhum jogo encontrado.</p>
